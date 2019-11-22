@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/regist.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" >
+		$(document).ready(function(){
+			$("#reg").click(function(){
+				
+				if ($("#userName").val() == "")
+				{
+					alert("pls input user name");
+					return;
+				}
+				
+				if ($("#userId").val() == "")
+				{
+					alert("pls input user Id");
+					return;
+				}
+				
+				if ($("#userPwd").val() == "")
+				{
+					alert("pls input password");
+					return;
+				}
+				
+				if ($("#userPwd2").val() == "")
+				{
+					alert("pls input password again");
+					return;
+				}
+				
+				if ($("#userSex").val() == "")
+				{
+					alert("pls input user sex");
+					return;
+				}
+				
+				if ($("#age").val() == "")
+				{
+					alert("pls input user age");
+					return;
+				}
+				
+				if ($("#userPwd").val() != $("#userPwd2").val())
+				{
+					alert("password is not same");
+					return;
+				}
+				
+				
+				$.ajax({					
+					url : "http://127.0.0.1:8080/user/addUser",
+                    dataType : 'json',	
+                    type : "POST",					
+					data : {
+						name: $("#userName").val(),
+						id: $("#userId").val(),
+						password: $("#userPwd").val(),
+						age: $("#age").val(),
+						sex: $("#userSex").val()
+					},					
+					success : function(res) {
+						console.log(res);
+						
+						if (res.state == 1)
+						{
+							alert("User add successful");
+						}
+						else if (res.state == 2)
+						{
+							alert("User add error");
+						}
+						else if (res.state == 0)
+						{
+							alert("User add error");
+						}
+						else if (res.state == 3)
+						{
+							alert("DB error");
+						}
+						
+					},					
+					error : function(e){
+						console.log(e.status);
+						console.log(e.responseText);
+					}
+				});
+			});
+		});
+	</script>
+	
+</head>
+<body>
+    <div class="wrapper">
+        <article>
+            <h1><em>치매 검진 자동화 모듈 개발</em><span></span></h1>
+            <div class="main">
+                <div>
+                    <div class="name">
+                        <input type="name" name="userName" id="userName" placeholder="name"><em></em>
+                    </div>
+                    <div class="userName">
+                        <input type="text" name="userId" id="userId" placeholder="id number"><em></em>
+                    </div>
+                    <div class="password">
+                        <input type="password" name="userPwd" id="userPwd" placeholder="password"><em></em>
+                    </div>
+                    <div class="againpwd">
+                        <input type="password" name="userPwd2" id="userPwd2" placeholder="password again"><em></em>
+                    </div>
+                    <div class="sex">
+                        <input type="text" name="userSex" id="userSex" placeholder="M or F"><em></em>
+                    </div>
+					<div class="age">
+                        <input type="text" name="age" id="age" placeholder="age"><em></em>
+                    </div>
+                    <button id="reg">회원가입</button>
+                </div>
+            </div>
+        </article>
+        <footer>
+            <ul>
+                <li><a href="#">contact us</a></li>
+              
+            </ul>
+      
+        </footer>
+    </div>
+</body>
+</html>

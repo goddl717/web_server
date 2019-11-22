@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sign in </title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".name input").focus(function(){
+                $(this).prev("i").css({"background-image":"assets/url(img/user2.png)"});
+            });
+            $(".name input").blur(function(){
+                $(this).prev("i").css({"background-image":"assets/url(img/user1.png)"});
+            });
+            $(".password input").focus(function(){
+                $(this).prev("i").css({"background-image":"assets/url(img/password2.png)"});
+            });
+            $(".password input").blur(function(){
+                $(this).prev("i").css({"background-image":"assets/url(img/password1.png)"});
+            });
+			
+			$("#login").click(function(){
+				
+				if ($("#userName").val() == "")
+				{
+					alert("pls input user name");
+					return;
+				}
+				
+				if ($("#password").val() == "")
+				{
+					alert("pls input password");
+					return;
+                }
+                //var params = {"id" :$("#userName").val(), "password" :$("#password").val()};
+                //console.log(params)
+               // console.log($("#userName").val() );
+               // console.log($("#password").val() );
+				$.ajax({					
+                    url : "http://127.0.0.1:8080/user/checkId",
+                    dataType : 'json',	
+                    type : "POST",				
+					data : {'id' : $("#userName").val() , 'password' :$("#password").val() },					
+					success : function(res) {
+                        console.log(res);
+                        
+						
+						if (res.state == 1)
+						{
+                            alert("login successful");
+                            //다음 화면 으로 넘어감.
+                            //location.href = ""
+
+						}
+						else if (res.state == 2)
+						{
+                            if (confirm("login error: have no id information")){
+                                location.reload();
+                            }
+                            
+						}
+						else if (res.state == 0)
+						{
+                            if (confirm("login error: have no id information")){
+                                location.reload();
+                            }
+						}
+						
+					},					
+					error : function(e){
+						console.log(e.status);
+						console.log(e.responseText);
+					}
+				});
+			});
+			
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrap">
+            <header><em> 치매 검진 자동화 모듈 개발</em><span></span></header>
+            <article>
+                <section>
+                    <aside>
+                        <em>
+                            <img src="assets/img/user.png">
+                        </em>
+                         <div>
+                            <p class="name"><i></i><input type="text" name="userName" id="userName" class="userName" placeholder="input id number"></p>
+                            <p class="password"><i></i><input type="password" id="password" class="pwd" placeholder="input password"></p>
+                            <button id="login">sign in</button>
+                            <p class="remember"><input type="checkbox" name="remember">remember password</p><i></i>
+                            <p class="regist"><span>Dont have an account?</span><a href="/regist">register now</a></p>
+                            <div class="clear"></div>							
+                        </div>
+                    </aside>
+                   
+                </section>               
+            </article>
+            <footer>
+                <ul>
+                    <li><a href="#">contact us</a></li>
+                    
+                </ul>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

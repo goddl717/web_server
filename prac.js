@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var {PythonShell} = require('python-shell');
-
+var http = require('http'); 
+var fs = require('fs'); // 파일 읽기, 쓰기 등 을 할 수 있는 모듈
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -13,6 +14,8 @@ var updatePassRouter = require('./user/updatePass');
 var pythonRouter = require('./pyth/ImageToText')
 var storeRouter = require('./dia/storeData');
 var storeNegativeRouter = require('./dia/storeDataNegative');
+//var screenRouter = require('./screen/screen');
+
 //var storeTextRouter = require('./pyth/storeText');
 
 
@@ -33,6 +36,8 @@ app.use('/user/updatePass',updatePassRouter);
 app.use('/pyth/ImageToText',pythonRouter);
 app.use('/dia/storeData',storeRouter);
 app.use('/dia/storeDataNegative',storeNegativeRouter);
+//app.use('/screen/screen',screenRouter);
+
 //app.use('/pyth/StoreText',storeTextRouter);
 
 
@@ -372,6 +377,7 @@ app.post('/ImageToText',function(req,res){
 
 });
 */
+
 
 app.listen(8080,function(){
     console.log('listening 8080!');

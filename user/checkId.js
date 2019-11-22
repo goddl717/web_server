@@ -4,7 +4,6 @@ var mysql = require('mysql');
 var app = express();
 var router = express.Router();
 
-router.use(bodyParser.urlencoded({extended: false}));
 
 var pool = mysql.createPool({
     connectionLimit :10,
@@ -49,6 +48,8 @@ router.post('/',function(req,res,next){
     console.log('/checkId 호출됨');
     var paraId = req.body.id || req.query.id;
     var paraPassword = req.body.password || req.query.password;
+    console.log(req.body);
+    //console.log(req.query);
     console.log('요청된 파라미터 :'+paraId+paraPassword);
     if (pool){
         authUser(paraId,paraPassword,function(err,rows){
@@ -74,4 +75,7 @@ router.post('/',function(req,res,next){
         })
     }
 });
+
+router.use(bodyParser.urlencoded({extended: false}));
+
 module.exports = router;
