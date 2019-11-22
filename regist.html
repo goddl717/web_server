@@ -68,19 +68,25 @@
 						
 						if (res.state == 1)
 						{
-							alert("User add successful");
+							if (confirm("User add successful"))
+								location.href = "http://127.0.0.1:3000"	;
+								
 						}
 						else if (res.state == 2)
 						{
-							alert("User add error");
+							if (confirm("User add error"))
+								location.reload();
+						
 						}
 						else if (res.state == 0)
 						{
-							alert("User add error");
+							if (confirm("User add error"))
+								location.reload();
 						}
 						else if (res.state == 3)
 						{
-							alert("DB error");
+							if (confirm("DB error"))
+								location.reload();
 						}
 						
 					},					
