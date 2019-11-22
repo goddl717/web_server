@@ -1,2 +1,0 @@
-node prac.js 로 포트 8080 을 쓰는 서버 하나 실행
-node screen.js 포트 3000을 쓰는 서버 (html 파일 비쥬얼)
