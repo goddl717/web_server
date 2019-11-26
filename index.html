@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>sign in </title>
     <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+
+    <meta name="google-signin-client_id" content="855158534288-pkdsuhla1sjf42q9naa92p3m51nb4nr7.apps.googleusercontent.com">
     <script type="text/javascript">
         $(function(){
             $(".name input").focus(function(){
@@ -89,12 +92,52 @@
                             <img src="assets/img/user.png">
                         </em>
                          <div>
-                            <p class="name"><i></i><input type="text" name="userName" id="userName" class="userName" placeholder="input id number"></p>
-                            <p class="password"><i></i><input type="password" id="password" class="pwd" placeholder="input password"></p>
-                            <button id="login">sign in</button>
-                            <p class="remember"><input type="checkbox" name="remember">remember password</p><i></i>
-                            <p class="regist"><span>Dont have an account?</span><a href="/regist">register now</a></p>
-                            <div class="clear"></div>							
+                            <p class="name"><i></i><input type="text" name="userName" id="userName" class="userName" placeholder="input id number" style = "width :95%; 
+                               display: inline-block;
+  padding: 10px 0 10px 15px;
+  font-family: 'Open Sans', sans;
+  font-weight: 400;
+  color: #377D6A;
+  background: #efefef;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 10px; 
+  transition: all .3s ease-in-out; "></p>
+  <br>
+                            <p class="password"><i></i><input type="password" id="password" class="pwd" placeholder="input password" style = "width :95%; 
+                                display: inline-block;
+   padding: 10px 0 10px 15px;
+   font-family: 'Open Sans', sans;
+   font-weight: 400;
+   color: #377D6A;
+   background: #efefef;
+   border: 0;
+   border-radius: 3px;
+   outline: 0;
+   text-indent: 10px; 
+   transition: all .3s ease-in-out; "></p>
+   
+                            <button id="login" >sign in</button>
+                            <br><br>
+                            <div class="g-signin2" style="width: 400%;" data-onsuccess="onSignIn" ></div>
+                            <script>
+                                function onSignIn(googleUser) {
+                                    var profile = googleUser.getBasicProfile();
+                                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                                    console.log('Name: ' + profile.getName());
+                                    console.log('Image URL: ' + profile.getImageUrl());
+                                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                                    window.location= "https://www.naver.com";
+                                    //넘어가는 부분.
+
+                                }
+                                </script>
+
+                      <div style = "text-align: center;"><input type="checkbox" name="remember">remember password<i></i></div><br>
+                      <div style = "text-align: center;"> <span>Dont have an account?</span><br><a href="http://localhost:3000/regist">register now</a></div>
+                            
+                           <div class="clear"></div>							
                         </div>
                     </aside>
                    

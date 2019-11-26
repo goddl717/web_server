@@ -28,19 +28,46 @@ article h1 em{display: inline-block;color:#5593ce;font-size: 25px;}
 	background-color: rgba(24, 80, 137, 0.77);
 }
 form{
-	width: 297px;
-	margin: 0 auto;
+	width :95%;
+						display: inline-block;
+padding: 10px 0 10px 15px;
+font-family: 'Open Sans', sans;
+font-weight: 400;
+color: #377D6A;
+background: #efefef;
+border: 0;
+border-radius: 3px;
+outline: 0;
+text-indent: 10px; 
+transition: all .3s ease-in-out; 
 }
 .main form input{
-	margin: 10px 0;
-    width: 280px;
-    height: 35px;
-    border-radius: 3px;
-    display: inline-block;
-    border: 1px solid rgb(165, 161, 161);
-    padding-left: 10px;
+	width :95%;
+						display: inline-block;
+padding: 10px 0 10px 15px;
+font-family: 'Open Sans', sans;
+font-weight: 400;
+color: #377D6A;
+background: #efefef;
+border: 0;
+border-radius: 3px;
+outline: 0;
+text-indent: 10px; 
+transition: all .3s ease-in-out; 
 }
-form button{width: 290px;height: 35px;background-color: red;color: #fff;border:none;margin-top: 15px;letter-spacing: 10px;font-size: 16px;text-align: center;}
+form button{
+	width :95%; 
+	display: inline-block;
+padding: 10px 0 10px 15px;
+font-family: 'Open Sans', sans;
+font-weight: 400;
+color: #377D6A;
+background: #efefef;
+border: 0;
+border-radius: 3px;
+outline: 0;
+text-indent: 10px; 
+transition: all .3s ease-in-out; }
 footer{
 	width: 100%;
 	position: absolute;
