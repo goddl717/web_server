@@ -36,12 +36,14 @@
 					alert("pls input password");
 					return;
                 }
+
                 //var params = {"id" :$("#userName").val(), "password" :$("#password").val()};
                 //console.log(params)
                // console.log($("#userName").val() );
                // console.log($("#password").val() );
+
 				$.ajax({					
-                    url : "http://127.0.0.1:8080/user/checkId",
+                    url : "/user/checkId",
                     dataType : 'json',	
                     type : "POST",				
 					data : {'id' : $("#userName").val() , 'password' :$("#password").val() },					
@@ -53,7 +55,8 @@
 						{
                             alert("login successful");
                             //다음 화면 으로 넘어감.
-                            //location.href = ""
+                            location.href = "https://www.naver.com";
+
 
 						}
 						else if (res.state == 2)
@@ -135,7 +138,7 @@
                                 </script>
 
                       <div style = "text-align: center;"><input type="checkbox" name="remember">remember password<i></i></div><br>
-                      <div style = "text-align: center;"> <span>Dont have an account?</span><br><a href="http://localhost:3000/regist">register now</a></div>
+                      <div style = "text-align: center;"> <span>Dont have an account?</span><br><a href="/regist">register now</a></div>
                             
                            <div class="clear"></div>							
                         </div>

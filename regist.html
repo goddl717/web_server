@@ -53,7 +53,7 @@
 				
 				
 				$.ajax({					
-					url : "http://127.0.0.1:8080/user/addUser",
+					url : "/user/addUser",
                     dataType : 'json',	
                     type : "POST",					
 					data : {
@@ -69,7 +69,7 @@
 						if (res.state == 1)
 						{
 							if (confirm("User add successful"))
-								location.href = "http://127.0.0.1:3000"	;
+								location.href = "/login"	;
 								
 						}
 						else if (res.state == 2)
